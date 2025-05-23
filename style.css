@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*todo*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*body*/
+
+body {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    overflow-x: hidden;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/*fuentes*/
+
+h1 {
+    color: #3b3b3b;
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+    font-size: 2.8em;
+}
+
+a, 
+p, 
+h2, 
+span {
+    font-family: "Roboto Condensed", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*barra de navegación - navbar*/
+
+.navbar {
+    background-color: #e8e7e5 !important;
+}
+
+/* Cambia esto: */
+.nav-link a {
+    position: relative;
+}
+
+.nav-link a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px; /* También corregí el typo (tenías "2p") */
+    background-color: #3b3b3b;
+    transition: .3s;
+}
+
+.nav-link a:hover::before {
+    width: 100%;
+}
+
+/* Por esto: */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3b3b3b;
+    transition: width .3s ease;
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+.nav-link {
+    margin-left: 50px;
+}
+
+/*presentación*/
+/*
+.row { como es una propiedad de boostrap, ya tiene el display flex, entonces no es necesario
+    justify-content: center;
+}
+*/
+.about-me-container, 
+footer {
+    background-color: #e8e7e5;
+}
+
+.about-me-container {
+    border-radius: 0 0 50px 50px;
+    position: relative; 
+    z-index: 4;
+    padding-bottom: 50px;
+}
+
+.about-section { 
+    padding: 40px 20px;
+}
+
+.presentation-box {
+    position: relative;
+    padding: 20px;
+    margin-bottom: 120px;
+}
+
+.presentation {
+    height: auto;
+    min-height: 250px;
+    background-color: #d6d4d0;
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    z-index: 3;
+}
+
+/*
+.presentation-box,
+.tools-box {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+*/
+
+/*
+.presentation, 
+.tools {
+    height: 300px;
+    background: #d6d4d0;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+}
+*/
+
+
+/*imagen de perfil*/
+
+.profile {
+    position: absolute;
+    bottom: -350px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    background-color: #827d7c;
+    border: 15px #ffffff;
+    border-style: double;
+    object-fit: cover;
+}
+
+/*botón educación y experiencia*/
+
+.careerOverview-btn {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 290px;
+    height: 50px;
+    margin: 35px auto;
+    position: relative;
+    border-radius: 30px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #3b3b3b;
+    font-family: "Fredoka", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#btns {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #3b3b3b;
+    border-radius: 30px;
+    transition: 0.5s;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+/*redes sociales*/
+
+.social-media {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    margin-top: -50px;
+}
+
+.social-media a {
+    width: 55px;
+    text-align: center;
+    font-size: 24px;
+    color: #3b3b3b;
+    background: white;
+    margin: 0 15px 0 15px;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-media a:hover{
+    transform: scale(1.2); /*1 - se mantiene igual, mayor a 1 aumenta de tamaño, menor de 1 disminuye de tamaño*/
+}
+
+/*herramientas - tools*/
+
+.tools-box {
+    padding: 20px;
+    margin-top: 150px;
+}
+
+.tools {
+    height: auto;
+    min-height: 250px;
+    background: #d6d4d0;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+/*
+.tools-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+*/
+
+
+.tools-icons img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.tools-icons img:hover {
+    transform: scale(1.1);
+}
+
+/*mis trabajos*/
+
+.myWorks-container {
+    background-color: #f6f6f6;
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    margin-top: -50px;
+    padding-top: 30px;
+    z-index: 2;
+}
+
+.row {
+    justify-content: center;
+}
+
+.myWorks-section {
+    display:grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.myWorks-section h1 {
+    text-align: center;
+}
+
+
+.work1, 
+.work2, 
+.work3 {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    padding: 0;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.work1 img, 
+.work2 img, 
+.work3 img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+/*animaciones de works*/
+
+.work1:hover, 
+.work2:hover, 
+.work3:hover {
+    transform: translateY(-10px);
+}
+
+.description {
+    padding: 20px;
+}
+
+/*etiquetas de tecnologías utilizadas*/
+
+.tech-tags {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    color: white;
+    gap: 10px;
+}
+
+.tags {
+    background-color: #3b3b3b;
+    padding: 2px 10px;
+    width: 75px;
+    border-radius: 35px;
+    font-family: "Fredoka", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/*sección educación*/
+
+.careerOverview {
+    background-color: #e8e7e5;
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    margin-top: -50px;
+    padding-top: 30px;
+    z-index: 1;
+}
+
+.careerOverview h1 {
+    padding: 50px 0px 0px;
+    text-align: center;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.timeline-container {
+    padding: 10px 50px;
+    position: relative;
+    width: 50%;
+}
+
+.text-box {
+    padding: 20px 30px;
+    background: #f6f6f6;
+    position: relative;
+    border-radius: 20px;
+}
+
+.left-container {
+    left: 0;
+}
+
+.right-container {
+    left: 50%;
+}
+
+.timeline-dot {
+    background: #3b3b3b;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    right: -6px;
+    top: 32px;
+    z-index: 10;
+}
+
+.right-container .timeline-dot {
+    left: -9px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background: #3b3b3b;
+    top: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: -1;
+}
+
+/*estilos del texto*/
+
+.text-box h2 {
+    font-family: "Roboto Condensed", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.timeline-date,
+.timeline-school,
+.timeline-job {
+    font-family: "Roboto Condensed", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.timeline-date {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.timeline-school,
+.timeline-job {
+    font-size: 16px
+}
+
+/*timeline responsivo*/
+
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 30px; /* Mueve la línea al inicio */
+    }
+
+    .timeline-container {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 25px;
+        margin-bottom: 30px;
+    }
+
+    .left-container,
+    .right-container {
+        left: 0;
+    }
+
+    .timeline-dot {
+        left: 21px;
+        right: auto;
+    }
+
+    .right-container .timeline-dot {
+        left: 21px;
+    }
+
+    .text-box {
+        margin-left: 25px;
+    }
+}
+
+/*sección de experiencia*/
+
+.cv-btn {
+    padding: 20px 30px;
+    position: relative;
+    border-radius: 20px;
+}
+
+.cv-btn button {
+    background-color: #3b3b3b;
+    width: 300px;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.cv-btn button:hover {
+    background-color: #827d7c;
+}
+
+
+/*contact*/
+
+.contact-me {
+    background-color: #f6f6f6;
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    margin-top: -50px;
+    padding-top: 30px;
+    z-index: 0;
+}
+
+.contact-section {
+    padding:  0 20px;
+}
+
+.contact-info {
+    text-align: left;
+    padding: 30px;
+}
+
+.contact-info h1 {
+    font-size: 80px;
+}
+
+.contact-item {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-item a,
+.contact-item i,
+.social-links a{
+    color: #3b3b3b;
+    font-size: 22px;
+}
+
+.contact-item i,
+.social-links i {
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.contact-item:not(.no-animation) i:hover, /*not excluye al elemento o la clase*/
+.social-links i:hover {
+    transform: translateY(-5px);
+}
+
+.contact-item a {
+    text-decoration: none;
+}
+
+.contact-item span {
+    padding: 15px;
+    font-size: 22px;
+}
+
+.social-links a{
+    margin-right: 15px;
+}
+
+/*formulario de contacto*/
+
+.form-contact {
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3b3b3b;
+    margin-top: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 14px;
+    transition: border 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus {
+    border-color: 2px solid #827d7c;
+    outline: none;
+    box-shadow: 0 0 5px rgba(59, 59, 59, 0.4);
+}
+
+textarea {
+    resize: none;
+}
+
+.btn-form {
+    background-color: #3b3b3b;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-form:hover {
+    background-color: #827d7c;
+    color: white;
+}
+
+/*footer*/
+
+footer {
+    background-color: #e8e7e5;
+    margin-top: -50px;
+    padding: 80px 0;
+    position: relative;
+    z-index: -1;
+}
+
+/*media queries
+
+@media (max-width: 375px) {
+    .presentation h1,
+    .tools h1 {
+        font-size: 40px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .presentation,
+    .tools {
+        padding: 20px 15px;
+    }
+
+    .contact-info h1 {
+        font-size: 50px;
+    }
+
+    .social a {
+        font-size: 24px;
+    }
+    
+    .row.align-items-center {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .form-contact {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 320px) {
+    .presentation h1,
+    .tools h1 {
+        font-size: 36px;
+    }
+
+    .contact-info h1 {
+        font-size: 45px;
+    }
+}
+
+*/
