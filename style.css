@@ -158,7 +158,7 @@ footer {
 
 .profile {
     position: absolute;
-    bottom: -350px;
+    bottom: -400px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
@@ -258,7 +258,7 @@ footer {
 
 .tools-box {
     padding: 20px;
-    margin-top: 150px;
+    margin-top: 200px;
 }
 
 .tools {
@@ -671,6 +671,10 @@ footer {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.logo-form img {
+    width: 200px;
 }
 
 .footer-navigation,  
