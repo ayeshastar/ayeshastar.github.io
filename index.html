@@ -21,7 +21,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto gap-lg-5">
                         <!--se agregó un ms-auto para que las opciones se posicionen a la derecha de la página. Aplica un margen automático en la izquierda para empujar los elementos a la derecha-->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
@@ -222,7 +222,12 @@
                             <div class="timeline-date">2023 - 2024</div>
                             <h2 class="timeline-career">Estudiante Dual</h2>
                             <h3 class="timeline-job">Daimler Buses México - Mercedes Benz</h3>
-                            <p>Fui parte del programa dual en el área de Tecnologías de la Información, desempeñando funciones relacionadas con la gestión de procesos internos. Participé en la documentación de procedimientos, soporte a usuarios, manejo de incidencias y coordinación entre áreas. Esta experiencia fortaleció mis habilidades de organización, comunicación, seguimiento de tareas y trabajo colaborativo en un entorno empresarial de gran escala.
+                            <p>Fui parte del programa dual en el área de Tecnologías de la Información, desempeñando
+                                funciones relacionadas con la gestión de procesos internos. Participé en la
+                                documentación de procedimientos, soporte a usuarios, manejo de incidencias y
+                                coordinación entre áreas. Esta experiencia fortaleció mis habilidades de organización,
+                                comunicación, seguimiento de tareas y trabajo colaborativo en un entorno empresarial de
+                                gran escala.
                             </p>
                         </div>
                     </div>
@@ -234,7 +239,12 @@
                             <h2 class="timeline-career">Associate Software Developer
                             </h2>
                             <h3 class="timeline-job">Zapote Labs</h3>
-                            <p>Formo parte de un equipo de desarrollo donde estoy aplicando mis conocimientos técnicos en un entorno real. Trabajo en la creación de un proyecto de portafolio profesional, abordando tareas como estructuración de interfaces, consumo de APIs, manejo de estados y buenas prácticas de desarrollo web. Estoy utilizando tecnologías como HTML, CSS, JavaScript y frameworks modernos, mientras me familiarizo con metodologías ágiles y herramientas colaborativas.</p>
+                            <p>Formo parte de un equipo de desarrollo donde estoy aplicando mis conocimientos técnicos
+                                en un entorno real. Trabajo en la creación de un proyecto de portafolio profesional,
+                                abordando tareas como estructuración de interfaces, consumo de APIs, manejo de estados y
+                                buenas prácticas de desarrollo web. Estoy utilizando tecnologías como HTML, CSS,
+                                JavaScript y frameworks modernos, mientras me familiarizo con metodologías ágiles y
+                                herramientas colaborativas.</p>
                         </div>
                     </div>
 
@@ -291,8 +301,63 @@
 
     <!--footer-->
     <footer>
-        <div class=""></div>
+        <div class="container-fluid">
+            <div class="row footer-containers"> 
+                <div class="col-md-3 logo-form">
+                    <img src="" alt="logo">
+                    <p>Transformo ideas en experiencias digitales que brillan con propósito.</p>
+                </div>
+
+                <div class="col-md-3 footer-navigation">
+                    <h3>Navegación</h3>
+                    <a href="">Inicio</a>
+                    <a href="">Presentación</a>
+                    <a href="">Mis trabajos</a>
+                    <a href="">Experiencia</a>
+                    <a href="">Contacto</a>
+                </div>
+
+                <div class="col-md-3 footer-social-media">
+                    <h3>Redes sociales</h3>
+                    <a href="https://www.linkedin.com/in/estrellaher/"><i class="fab fa-linkedin icon-linkedin"></i></a>
+                    <a href="https://github.com/ayeshastar"><i class="fab fa-github icon-github"></i></a>
+                </div>
+
+                <div class="col-md-3 footer-contact">
+                    <h3>Contacto</h3>
+                    <div class="footer-email">
+                        <a href="mailto:estrella-her@hotmail.com?subject=Consulta&body=Hola%20Estrella,%0D%0A%0D%0AMe%20gustaría%20trabajar%20contigo.%0D%0A%0D%0ASaludos,"><i class="fa-solid fa-envelope"></i><span>estrella-her@hotmail.com</span></a>
+                    </div>
+                    <div class="footer-location">
+                        <i class="fa-solid fa-location-dot"></i><span>Monterrey, México</span>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <hr>
+                    <h3>© 2025 Estrella Her <span>All Rights Reserved.</span></h3>
+                </div>
+            </div>
+        </div>
     </footer>
+
+
+    <!-- Bottom navbar para dispositivos móviles -->
+    <nav class="navbar fixed-bottom d-flex justify-content-around d-lg-none border-top">
+        <a class="nav-link nav-bottom text-center" href="#">
+            <i class="fas fa-home"></i><br>
+        </a>
+        <a class="nav-link nav-bottom text-center" href="#about-me">
+            <i class="fas fa-user"></i><br>
+        </a>
+        <a class="nav-link nav-bottom text-center" href="#education">
+            <i class="fa-solid fa-graduation-cap"></i><br>
+        </a>
+        <a class="nav-link nav-bottom text-center" href="#contact-me">
+            <i class="fas fa-envelope"></i><br>
+        </a>
+    </nav>
+
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
