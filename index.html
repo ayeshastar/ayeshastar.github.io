@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Carta para ti 💌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Tangerine:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="background-decor"></div>
+
+    <main class="app">
+        <!-- PANTALLA 1: BLOQUEO CON PAD NUMÉRICO -->
+        <section id="lockScreen" class="screen screen--active">
+            <div class="card lock-card">
+                <h1 class="lock-title">Oa, amor 💗</h1>
+                <p class="lock-chip">Carta secreta · Solo para ti ✨</p>
+                <p class="lock-subtitle">
+                    Para leer tu carta secreta, escribe código correcto en el pad numérico.
+                </p>
+
+                <!-- Display de código (tipo password) -->
+                <div id="codeDisplay" class="code-display" aria-label="Código de acceso"></div>
+
+                <!-- Mensajes (error / info) -->
+                <p id="lockError" class="lock-message lock-message--error hidden">
+                    ✨ Ups, ese no es el código correcto, amor. Intenta otra vez 💕
+                </p>
+                <p id="lockInfo" class="lock-message">
+                    Usa el pad de abajo para escribir la fecha.
+                </p>
+
+                <!-- Pad numérico -->
+                <div class="keypad" aria-label="Pad numérico">
+                    <button class="keypad-key" data-key="1">1</button>
+                    <button class="keypad-key" data-key="2">2</button>
+                    <button class="keypad-key" data-key="3">3</button>
+
+                    <button class="keypad-key" data-key="4">4</button>
+                    <button class="keypad-key" data-key="5">5</button>
+                    <button class="keypad-key" data-key="6">6</button>
+
+                    <button class="keypad-key" data-key="7">7</button>
+                    <button class="keypad-key" data-key="8">8</button>
+                    <button class="keypad-key" data-key="9">9</button>
+
+                    <button class="keypad-key keypad-key--hint" id="hintButton" type="button">
+                        Pista
+                    </button>
+                    <button class="keypad-key" data-key="0">0</button>
+                    <button class="keypad-key keypad-key--delete" id="deleteButton" type="button">
+                        ⌫ Borrar
+                    </button>
+                </div>
+
+                <!-- Texto de pista -->
+                <p id="hintText" class="lock-hint hidden">
+                    Pista: es una fecha especial para ambos ❤️
+                </p>
+            </div>
+        </section>
+
+        <!-- PANTALLA 2: SOBRE Y CARTA -->
+        <section id="envelopeScreen" class="screen screen--hidden">
+            <div class="envelope-section">
+                <p class="envelope-intro">
+                    Te llegó una carta, da clic en el sobre para abrirla. 💌
+                </p>
+
+                <div class="envelope-wrapper">
+                    <button id="envelope" class="envelope" type="button" aria-label="Abrir sobre">
+                        <div class="envelope__back"></div>
+                        <div class="envelope__front"></div>
+                        <div class="envelope__flap"></div>
+
+                        <!-- Carta asomándose -->
+                        <div id="letterPreview" class="envelope__letter">
+                            <div class="envelope__letter-inner">
+                                <span class="letter-lines"></span>
+                                <span class="letter-lines"></span>
+                                <span class="letter-heart">💗</span>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+                <p id="pullMessage" class="pull-message hidden">
+                    Saca la carta para poder leerla ✨
+                </p>
+
+                <!-- Carta completa -->
+                <article id="fullLetter" class="letter-card hidden">
+                    <h2 class="letter-title">Para ti, con mucho amor</h2>
+
+                    <!-- INICIO DEL TEXTO EDITABLE DE LA CARTA -->
+                    <div class="letter-body">
+                        <p>
+                            Amado mío,
+                        </p>
+                        <p>
+                            Cuando tu ausencia me rodea, todo el aire se vuelve pesado y triste, como si el mundo
+                            se negara a latir sin tu aliento. Y es entonces cuando descubro que mi corazón, por más
+                            rebelde que intente ser, solo se inclina hacia ti.
+                        </p>
+                        <p>
+                            No hay en mí rincón que no te nombre: en mis manos tiembla tu recuerdo, en mis ojos se
+                            enciende tu figura. Hasta en el silencio que me cubre escucho tu presencia, como si el
+                            universo entero se empeñara en repetirme tu nombre.
+                        </p>
+                        <p>
+                            Si amar es perderse, me declaro perdida en ti con júbilo. Porque solo en tu amor mi alma
+                            se reconoce, y en tu abrazo encuentro la eternidad que ninguna palabra puede explicar. 💖
+                        </p>
+                        <p>
+                            Gracias por estos tres primeros meses, amor.
+                            Ojalá que algún día, cuando volvamos a abrir esta carta, podamos decir:
+                            “¿te acuerdas cuando apenas llevábamos 3 meses y no sabíamos todo lo que venía?” ✨
+                        </p>
+                        <p>
+                            Te amo,<br>
+                            Estrella
+                        </p>
+                    </div>
+
+                    <!-- FIN DEL TEXTO EDITABLE DE LA CARTA -->
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer dulce -->
+    <footer class="app-footer">
+        Hecho con mucho amor solo para ti ✨
+    </footer>
+
+    <!-- Música de fondo -->
+    <audio id="bg-music" src="sounds/bg-music.mp3" loop preload="auto"></audio>
+
+    <!-- Botón flotante para activar música -->
+    <button id="musicButton" class="music-button">
+        🎵 Activar música
+    </button>
+
+    <audio id="sound-key" src="sounds/key-soft.mp3" preload="auto"></audio>
+    <audio id="sound-envelope-open" src="sounds/envelope-open.wav" preload="auto"></audio>
+    <audio id="sound-letter-pull" src="sounds/letter-pull.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

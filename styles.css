@@ -1,0 +1,630 @@
+/* --------- RESET SENCILLO --------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------- BASE --------- */
+:root {
+  --bg-gradient-start: #ffe6f0;
+  --bg-gradient-end: #fff8f2;
+  --accent: #ff8fb1;
+  --accent-strong: #ff5c8a;
+  --accent-soft: #ffe0ec;
+  --text-main: #4b3b47;
+  --text-soft: #8f7b88;
+  --white: #ffffff;
+  --shadow-soft: 0 14px 35px rgba(255, 143, 177, 0.35);
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --transition-fast: 0.25s ease;
+  --transition-normal: 0.45s ease;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  background-size: 200% 200%;
+  animation: bgMove 18s ease-in-out infinite;
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decoración de fondo con corazoncitos suaves */
+.background-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.55) 0, transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(255, 192, 203, 0.5) 0, transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(255, 228, 225, 0.8) 0, transparent 50%);
+  opacity: 0.7;
+  z-index: -2;
+}
+
+.background-decor::after {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  margin: auto;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 65%);
+  opacity: 0.7;
+  filter: blur(10px);
+}
+
+/* --------- LAYOUT PRINCIPAL --------- */
+.app {
+  width: 100%;
+  max-width: 480px;
+  min-height: 460px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  position: relative;
+}
+
+/* Footer dulce opcional */
+.app-footer {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(75, 59, 71, 0.7);
+}
+
+/* --------- PANTALLAS --------- */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.screen--active {
+  display: flex;
+  animation: fadeInUp 0.6s ease;
+}
+
+.screen--hidden {
+  display: none;
+}
+
+.screen--leaving {
+  animation: fadeOutDown 0.5s ease forwards;
+  filter: blur(1px);
+}
+
+/* --------- TARJETA BASE --------- */
+.card {
+  width: 100%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.96),
+    rgba(255, 245, 250, 0.9)
+  );
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 45px rgba(255, 143, 177, 0.45);
+  padding: 24px 20px 26px;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 200, 220, 0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(255, 163, 190, 0.08),
+    rgba(255, 214, 224, 0.4),
+    rgba(255, 163, 190, 0.08)
+  );
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* --------- PANTALLA DE BLOQUEO --------- */
+.lock-card {
+  text-align: center;
+}
+
+.lock-title {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+/* "Chip" debajo del título */
+.lock-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 230, 242, 0.9);
+  color: var(--accent-strong);
+  margin-bottom: 10px;
+}
+
+.lock-subtitle {
+  font-size: 0.93rem;
+  color: var(--text-soft);
+  margin-bottom: 18px;
+}
+
+/* Display del código */
+.code-display {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.code-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  background-color: transparent;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.code-dot.filled {
+  background-color: var(--accent);
+  border-color: var(--accent-strong);
+  transform: scale(1.1);
+}
+
+/* Mensajes */
+.lock-message {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  min-height: 1.2em;
+  margin-bottom: 10px;
+}
+
+.lock-message--error {
+  color: #d3416b;
+}
+
+.lock-hint {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--accent-strong);
+}
+
+/* Pad numérico */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.keypad-key {
+  border: none;
+  padding: 12px 0;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 600;
+  background: radial-gradient(circle at top left, #ffeef7, var(--accent-soft));
+  color: var(--text-main);
+  box-shadow: 0 10px 22px rgba(255, 143, 177, 0.35);
+  cursor: pointer;
+  transition:
+    transform 0.13s ease,
+    box-shadow 0.13s ease,
+    background 0.13s ease,
+    filter 0.13s ease;
+}
+
+.keypad-key:hover {
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
+.keypad-key:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 4px 10px rgba(255, 143, 177, 0.4);
+}
+
+.keypad-key--delete {
+  background: linear-gradient(135deg, #ffe3ea, #ffd0de);
+  font-size: 0.9rem;
+}
+
+.keypad-key--hint {
+  background: transparent;
+  border: 1px dashed rgba(255, 143, 177, 0.8);
+  font-size: 0.85rem;
+  box-shadow: none;
+}
+
+/* Ocultar */
+.hidden {
+  display: none !important;
+}
+
+/* --------- PANTALLA DEL SOBRE --------- */
+.envelope-section {
+  width: 100%;
+  text-align: center;
+  padding: 12px 4px;
+}
+
+/* Texto "Te llegó una carta..." */
+.envelope-intro {
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  color: var(--text-main);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Cuando el sobre se abre, el texto sube un poco */
+.envelope-intro--up {
+  transform: translateY(-62px);
+  opacity: 0.9;
+}
+
+.envelope-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Sobre */
+.envelope {
+  position: relative;
+  width: min(260px, 80vw);
+  height: calc(min(260px, 80vw) * 0.65);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform var(--transition-normal);
+  animation: envelopeFloat 5s ease-in-out infinite;
+}
+
+.envelope:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 4px;
+}
+
+.envelope:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Parte de atrás */
+.envelope__back {
+  position: absolute;
+  inset: 6px 6px 10px 6px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ffe5ef, #ffd6e8);
+  box-shadow: 0 12px 25px rgba(255, 130, 164, 0.45);
+  z-index: 1;
+}
+
+/* Parte delantera (tapa baja) */
+.envelope__front {
+  position: absolute;
+  inset: 30px 12px 14px 12px; /* subimos un poco para que la carta asome */
+  background: #ffeef7;
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px rgba(255, 191, 211, 0.8);
+  z-index: 3;
+}
+
+/* Solapa superior */
+.envelope__flap {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  right: 12px;
+  height: 50%;
+  background: linear-gradient(135deg, #ffd7e5, #ffc0da);
+  /* triángulo apuntando hacia abajo */
+  clip-path: polygon(0 0, 50% 98%, 100% 0);
+  transform-origin: top center;
+  transition: transform 0.45s ease;
+  box-shadow: 0 6px 12px rgba(255, 130, 164, 0.4);
+  z-index: 4;
+}
+
+/* Carta asomándose (estado base) */
+.envelope__letter {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 18px;
+  height: 58%;
+  border-radius: 14px;
+  background: #fffdfc;
+  box-shadow: 0 10px 25px rgba(180, 136, 151, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(18%); /* solo se ve un pedacito */
+  transition: transform 0.55s ease;
+  overflow: hidden;
+  z-index: 2; /* detrás del frente del sobre */
+}
+
+.envelope__letter-inner {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.letter-lines {
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 143, 177, 0.4),
+    rgba(255, 143, 177, 0.15)
+  );
+}
+
+.letter-heart {
+  font-size: 1.3rem;
+  margin-top: 4px;
+  animation: heartBeat 1.8s ease-in-out infinite;
+}
+
+/* Estado abierto del sobre: carta un poco más afuera */
+.envelope.is-open .envelope__flap {
+  transform: rotateX(160deg);
+}
+
+.envelope.is-open .envelope__letter {
+  transform: translateY(-8%);
+}
+
+/* Cuando la carta "sale" y se queda frente al sobre (segundo clic) */
+.envelope__letter.is-out {
+  transition: none; /* que no se pelee con la animation */
+  animation: letterFront 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 6; /* por delante del sobre */
+  box-shadow: 0 18px 40px rgba(173, 127, 144, 0.45);
+}
+
+/* Animación: sale un poquito, se acerca y queda casi en la misma altura */
+@keyframes letterFront {
+  0% {
+    transform: translateY(-8%) scale(1);       /* posición con sobre abierto */
+  }
+  60% {
+    transform: translateY(-14%) scale(1.04);   /* sale un poquito y "se acerca" */
+  }
+  100% {
+    transform: translateY(-10%) scale(1.02);   /* se queda casi a la misma altura, pero al frente */
+  }
+}
+
+/* Mensaje de "saca la carta" */
+.pull-message {
+  font-size: 0.9rem;
+  margin-top: 12px;
+  color: var(--text-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pull-message::after {
+  font-size: 1rem;
+}
+
+/* --------- CARTA COMPLETA --------- */
+.letter-card {
+  margin-top: 18px;
+  padding: 22px 20px 24px;
+  background: #fffdf8;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(173, 127, 144, 0.35);
+  text-align: left;
+  max-height: 55vh;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(46px) scale(0.88);
+  transform-origin: top center;
+  filter: blur(6px);
+  transition:
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(250, 214, 223, 0.9);
+  position: relative;
+}
+
+.letter-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 22px,
+    rgba(255, 198, 215, 0.18) 23px
+  );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.letter-card--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.letter-title {
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-size: 2.6rem;   /* Tangerine es pequeñita, por eso va más grande */
+  margin-bottom: 8px;
+  color: var(--accent-strong);
+}
+
+.letter-body {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #5c4450;
+}
+
+.letter-body p + p {
+  margin-top: 14px;
+}
+
+/* Scroll bonito en la carta */
+.letter-card::-webkit-scrollbar {
+  width: 6px;
+}
+.letter-card::-webkit-scrollbar-track {
+  background: #fbeaf3;
+  border-radius: 999px;
+}
+.letter-card::-webkit-scrollbar-thumb {
+  background: #f2b5ce;
+  border-radius: 999px;
+}
+
+/* --------- ANIMACIONES --------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* Pequeña vibración para error */
+.shake {
+  animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-6px); }
+  40%, 60% { transform: translateX(6px); }
+}
+
+/* Fondo animado */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Flotación del sobre */
+@keyframes envelopeFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Latido del corazón */
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  20% { transform: scale(1.15); }
+  40% { transform: scale(0.95); }
+  60% { transform: scale(1.08); }
+}
+
+/* --------- RESPONSIVE --------- */
+@media (min-width: 600px) {
+  .lock-card {
+    padding: 28px 26px 30px;
+  }
+
+  .lock-title {
+    font-size: 1.9rem;
+  }
+
+  .lock-subtitle {
+    font-size: 1rem;
+  }
+
+  .letter-card {
+    max-height: 60vh;
+  }
+}
+
+/* Botón flotante para activar música */
+.music-button {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #ffb6d9, #ff8fb1);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(255, 143, 177, 0.45);
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0.92;
+}
+
+.music-button:hover {
+  transform: scale(1.06);
+  opacity: 1;
+}
+
+.music-button:active {
+  transform: scale(0.95);
+}
+
+/* Cuando ya se activó la música, el botón desaparece suavemente */
+.music-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+}
