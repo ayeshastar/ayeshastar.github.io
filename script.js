@@ -3,7 +3,7 @@
 // ===========================
 
 // Cambia aquí fácilmente la contraseña (fecha) que quieras usar.
-const SECRET_CODE = "30102025"; // Ej: 24/07/2023 -> "24072023"
+const SECRET_CODE = "30082025"; // Ej: 24/07/2023 -> "24072023"
 
 let currentCode = "";
 
@@ -335,3 +335,4 @@ document.addEventListener("keydown", (event) => {
     clearMessages();
   }
 });
+
